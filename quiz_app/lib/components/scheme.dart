@@ -22,19 +22,15 @@ class Questions {
     return getQuestions[questionCounter].question;
   }
 
-  List option() {
-    return getQuestions[questionCounter].options;
-  }
+  // List option() {
+  //   return getQuestions[questionCounter].options;
+  // }
 
   String answer() {
     return getQuestions[questionCounter].answer;
   }
 
-void next() {
-    if (questionCounter < getQuestions.length - 1) {
-      questionCounter++;
-    }
-  }
+
   
 }
 

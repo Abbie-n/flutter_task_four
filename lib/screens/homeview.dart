@@ -7,21 +7,35 @@ class HomeView extends StatefulWidget {
 }
 
 class _HomeViewState extends State<HomeView> {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.blue[900],
       body: Column(
         children: <Widget>[
-          Padding(
-            padding: const EdgeInsets.only(top: 200, left: 65),
-            child: Text('Welcome To My Awesome Quiz',
-              style: TextStyle(fontSize: 20),
+          Container(
+            margin: EdgeInsets.only(top: 250),
+            //padding: const EdgeInsets.only(top: 200, left: 65),
+            child: Center(
+              child: Text(
+                'Welcome To My Awesome Quiz',
+                style: TextStyle(
+                  fontSize: 25,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                ),
+              ),
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.only(top: 50, left: 70),
+          Container(
+            margin: EdgeInsets.only(top: 50),
             child: RaisedButton(
+              color: Colors.blue[400],
+              splashColor: Colors.white24,
+              elevation: 8,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(20),
+              ),
               onPressed: () {
                 Navigator.push(
                   context,
@@ -30,9 +44,19 @@ class _HomeViewState extends State<HomeView> {
                   ),
                 );
               },
-              child: Text('Start Quiz'),
+              child: Padding(
+                padding: const EdgeInsets.only(
+                    top: 40, left: 50, right: 50, bottom: 40),
+                child: Text(
+                  'Start Quiz',
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontStyle: FontStyle.italic,
+                      fontSize: 20),
+                ),
+              ),
             ),
-          )
+          ),
         ],
       ),
     );

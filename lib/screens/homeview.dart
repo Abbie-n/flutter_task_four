@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../screens/quizpage.dart';
 
+//Landing Page
 class HomeView extends StatefulWidget {
   @override
   _HomeViewState createState() => _HomeViewState();
@@ -24,7 +25,8 @@ class _HomeViewState extends State<HomeView> {
                 color: Colors.white,
               ),
             ),
-          ),SizedBox(height: 90),
+          ),
+          SizedBox(height: 90),
           RaisedButton(
             color: Color(0xffefd705),
             splashColor: Colors.white24,

@@ -2,12 +2,14 @@ import 'package:flutter/material.dart';
 import './quizover.dart';
 import 'homeview.dart';
 
+//Page for the quiz content
 class QuizPage extends StatefulWidget {
   @override
   _QuizPageState createState() => _QuizPageState();
 }
 
 class _QuizPageState extends State<QuizPage> {
+  //list of questions to be displayed
   List<Map> questions = [
     {
       'question': 'How many bones does an adult human have?',
@@ -30,7 +32,8 @@ class _QuizPageState extends State<QuizPage> {
       'answer': 'Mary'
     },
     {
-      'question': 'How many sides, in total, would three triangles and three rectangles have?',
+      'question':
+          'How many sides, in total, would three triangles and three rectangles have?',
       'options': ['12', '21', '44', '8'],
       'answer': '21'
     },
@@ -42,6 +45,7 @@ class _QuizPageState extends State<QuizPage> {
 
     return Scaffold(
       backgroundColor: Color(0xff6e41a8),
+      //added WillPopScope to prevent the back button from working. Can only go back wen the home button is pressed
       body: WillPopScope(
         onWillPop: () {
           return null;
@@ -72,6 +76,7 @@ class _QuizPageState extends State<QuizPage> {
                 ),
                 Padding(
                   padding: const EdgeInsets.only(left: 0),
+                  //displays question index
                   child: Text(
                     'Question ' +
                         (questionCounter + 1).toString() +
@@ -81,6 +86,7 @@ class _QuizPageState extends State<QuizPage> {
                   ),
                 ),
                 Divider(thickness: 2, color: Colors.black),
+                //displays question
                 Text(
                   questions[questionCounter]['question'],
                   style: TextStyle(color: Colors.white, fontSize: 20),
@@ -93,6 +99,7 @@ class _QuizPageState extends State<QuizPage> {
                       borderRadius: BorderRadius.circular(15)),
                   child: Column(
                     children: <Widget>[
+                      //row for first and second options
                       Expanded(
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -107,6 +114,7 @@ class _QuizPageState extends State<QuizPage> {
                           ],
                         ),
                       ),
+                      //row for third and fourth options
                       Expanded(
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -122,6 +130,8 @@ class _QuizPageState extends State<QuizPage> {
                         ),
                       ),
                       SizedBox(height: 50),
+
+                      //next button to lead to the next question
                       RaisedButton(
                         color: Color(0xffefd705),
                         splashColor: Colors.white24,
@@ -147,10 +157,12 @@ class _QuizPageState extends State<QuizPage> {
                                 fontSize: 20),
                           ),
                         ),
-                      ),SizedBox(height: 50),
+                      ),
+                      SizedBox(height: 50),
                     ],
                   ),
                 ),
+                //displays live score
                 Padding(
                   padding: const EdgeInsets.only(top: 20),
                   child: Row(
@@ -186,6 +198,7 @@ class _QuizPageState extends State<QuizPage> {
   int scoreCounter = 0;
   int questionCounter = 0;
 
+//function for the next button
   void next() {
     setState(
       () {
@@ -206,6 +219,7 @@ class _QuizPageState extends State<QuizPage> {
     );
   }
 
+//function to increment score when the correct answer is clicked
   answer(String value) {
     if (value == questions[questionCounter]['answer']) {
       scoreCounter += 1;
@@ -215,11 +229,14 @@ class _QuizPageState extends State<QuizPage> {
   }
 
   bool buttonClicked = false;
+
+  //seperated the color of each option
   Color firstColor = Color(0xfffefcfb);
   Color secondColor = Color(0xfffefcfb);
   Color thirdColor = Color(0xfffefcfb);
   Color fourthColor = Color(0xfffefcfb);
 
+//function that loops through options, to mark the right answer green even if the wrong answer was selected
   setColor(String answer) {
     List options = questions[questionCounter]['options'];
 
@@ -253,6 +270,7 @@ class _QuizPageState extends State<QuizPage> {
     }
   }
 
+// different widget for each option
   Widget firstOption({String text, String answer}) {
     return Center(
       child: Padding(
@@ -266,16 +284,14 @@ class _QuizPageState extends State<QuizPage> {
               setState(() {
                 buttonClicked = true;
                 firstColor = text == answer ? Colors.green : Colors.red;
+                //replaced the answer function above with this if statement
                 if (text == questions[questionCounter]['answer']) {
                   scoreCounter += 1;
                 }
               });
             }
           },
-          // child: Padding(
-          //   padding: EdgeInsets.only(top: 20, bottom: 20, left: 45, right: 45),
           child: Text(text),
-          //),
           color: buttonClicked == true ? firstColor : Color(0xfffefcfb),
           splashColor: Colors.white24,
           shape: RoundedRectangleBorder(
@@ -298,6 +314,7 @@ class _QuizPageState extends State<QuizPage> {
               setState(() {
                 buttonClicked = true;
                 secondColor = text == answer ? Colors.green : Colors.red;
+                //replaced the answer function above with this if statement
                 if (text == questions[questionCounter]['answer']) {
                   scoreCounter += 1;
                 }
@@ -305,10 +322,7 @@ class _QuizPageState extends State<QuizPage> {
             }
           },
           elevation: 8,
-          // child: Padding(
-          //   padding: EdgeInsets.only(top: 20, bottom: 20, left: 45, right: 45),
           child: Text(text),
-          //),
           color: buttonClicked == true ? secondColor : Color(0xfffefcfb),
           splashColor: Colors.white24,
           shape: RoundedRectangleBorder(
@@ -331,6 +345,7 @@ class _QuizPageState extends State<QuizPage> {
               setState(() {
                 buttonClicked = true;
                 thirdColor = text == answer ? Colors.green : Colors.red;
+                //replaced the answer function above with this if statement
                 if (text == questions[questionCounter]['answer']) {
                   scoreCounter += 1;
                 }
@@ -338,10 +353,7 @@ class _QuizPageState extends State<QuizPage> {
             }
           },
           elevation: 8,
-          // child: Padding(
-          //   padding: EdgeInsets.only(top: 20, bottom: 20, left: 40, right: 40),
           child: Text(text),
-          //),
           color: buttonClicked == true ? thirdColor : Color(0xfffefcfb),
           splashColor: Colors.white24,
           shape: RoundedRectangleBorder(
@@ -364,6 +376,7 @@ class _QuizPageState extends State<QuizPage> {
               setState(() {
                 buttonClicked = true;
                 fourthColor = text == answer ? Colors.green : Colors.red;
+                //replaced the answer function above with this if statement
                 if (text == questions[questionCounter]['answer']) {
                   scoreCounter += 1;
                 }
@@ -371,14 +384,7 @@ class _QuizPageState extends State<QuizPage> {
             }
           },
           elevation: 8,
-          // child: Padding(
-          //   padding: EdgeInsets.only(top: 20, bottom: 20, left: 40, right: 40),
-          child: Text(
-            text,
-            maxLines: 2,
-            softWrap: true,
-          ),
-          // ),
+          child: Text(text),
           color: buttonClicked == true ? fourthColor : Color(0xfffefcfb),
           splashColor: Colors.white24,
           shape: RoundedRectangleBorder(

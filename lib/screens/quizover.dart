@@ -58,7 +58,7 @@ class _QuizOverState extends State<QuizOver> {
                 ),
                 Container(
                   height: 150,
-                  width: 250,
+                  width: 300,
                   decoration: BoxDecoration(
                       color: Color(0xffefd705),
                       borderRadius: BorderRadius.circular(15)),
@@ -72,7 +72,7 @@ class _QuizOverState extends State<QuizOver> {
   Widget feedback() {
       if (widget.scoreCounter <= 2) {
          return Center(
-            child: Text('Nice effort! \n\n' + 'You Got ' + widget.scoreCounter.toString() + '!',
+            child: Text('Nice effort! \n\n' + 'You Got ' + widget.scoreCounter.toString() + ' / 5',
             style: TextStyle(color: Color(0xff6e41a8), fontSize: 30)));
       } else if (widget.scoreCounter <= 4) {
          return Center(

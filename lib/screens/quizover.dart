@@ -77,12 +77,12 @@ class _QuizOverState extends State<QuizOver> {
       } else if (widget.scoreCounter <= 4) {
          return Center(
             child: Text(
-                'You are doing well! \n\n' + 'You Got ' + widget.scoreCounter.toString() + '!',
+                'You are doing well! \n\n' + 'You Got ' + widget.scoreCounter.toString() + ' / 5',
                 style: TextStyle(color: Color(0xff6e41a8), fontSize: 30)));
       } else if (widget.scoreCounter == 5) {
          return Center(
             child: Text(
-                'Boss! \n\n' + 'You Got ' + widget.scoreCounter.toString() + '!',
+                'Boss! \n\n' + 'You Got ' + widget.scoreCounter.toString() + ' / 5',
                 style: TextStyle(color: Color(0xff6e41a8), fontSize: 30)));
       } else {
          return Text("Didn't work");
